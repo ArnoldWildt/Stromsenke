@@ -30,6 +30,17 @@ Public Class Form1
         SPSetup()
     End Sub
 
+    Private Sub closemsg_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If Started Then
+            If MessageBox.Show("Das Programm läuft noch! Wirklich schließen?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                SerialPort.Open()
+                SerialPort.Write("C$")
+            Else
+                e.Cancel = True
+            End If
+        End If
+    End Sub
+
     Public Sub SerialPort_DataReceived(ByVal sender As Object, ByVal e As SerialDataReceivedEventArgs) Handles SerialPort.DataReceived
 
         Dim ToRead As Integer = SerialPort.BytesToRead
@@ -47,6 +58,7 @@ Public Class Form1
 
             SerialPort.Write("C$")
             Button1.Text = "Start"
+            Button1.BackColor = Color.Green
             SerialPort.Close()
 
             TextBox1.Enabled = True
@@ -54,7 +66,13 @@ Public Class Form1
             Started = False
         Else
             If String.IsNullOrEmpty(TextBox1.Text) Or String.IsNullOrEmpty(TextBox2.Text) Then
-                MessageBox.Show("Empty Line!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                MessageBox.Show("Zeile Leer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            ElseIf Not IsNumeric(TextBox1.Text) Or Not IsNumeric(TextBox2.Text) Then
+                MessageBox.Show("Keine Nummer!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            ElseIf TextBox1.Text < 5 Or TextBox1.Text > 30 Then
+                MessageBox.Show("Spannungsgrenze muss zwischen 5V - 30V liegen!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            ElseIf TextBox2.Text < 10 Or TextBox2.Text > 1000 Then
+                MessageBox.Show("Strom muss zwischen 10mA - 1000mA liegen! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             Else
                 SerialPort.Open()
                 PortRec = Nothing
@@ -79,6 +97,7 @@ Public Class Form1
                 TextBox1.Enabled = False
                 TextBox2.Enabled = False
                 Button1.Text = "Stop"
+                Button1.BackColor = Color.Red
                 Started = True
             End If
         End If
@@ -86,6 +105,7 @@ Public Class Form1
 
     Public Sub SPSetup()
         Button1.Enabled = False
+        Button1.BackColor = Color.Gray
         For Each Port As String In My.Computer.Ports.SerialPortNames
             If SerialPort.IsOpen = True Then
                 SerialPort.Close()
@@ -100,8 +120,9 @@ Public Class Form1
             If Not PortRec = Nothing Then
                 ListBox1.Items.Add(PortRec) ' Debugging
                 If PortRec.Contains("Arduino") Then
-                    Label3.Text = "Arduino on Com Port: " + Port
+                    Label3.Text = "Arduino Port: " + Port
                     Button1.Enabled = True
+                    Button1.BackColor = Color.Green
                     SerialPort.Close()
                     Return
                 End If
@@ -109,6 +130,7 @@ Public Class Form1
 
         Next
     End Sub
+
     Public Sub checkempty(str)
         If String.IsNullOrEmpty(str) Then
             ListBox1.Items.Add("Empty")
@@ -121,5 +143,6 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         SPSetup()
     End Sub
+
 
 End Class
