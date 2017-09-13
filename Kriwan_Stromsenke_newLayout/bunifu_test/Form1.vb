@@ -11,7 +11,7 @@ Public Class Form1
     Dim Volt As String
     Dim Curr As String
     Dim Started As Boolean
-    Dim dot As Char = "."
+    Dim dot As Char = ","
 
     Private _Encoding As System.Text.Encoding
 
@@ -163,7 +163,7 @@ Public Class Form1
 
             If String.IsNullOrEmpty(Vbox.text) Or String.IsNullOrEmpty(mAbox.text) Then
                 MessageBox.Show("Die Zeile darf nicht Leer sein!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-            ElseIf countdotV > 0 Or countdotmA > 0 Then
+            ElseIf countdotV > 1 Or countdotmA > 1 Then
                 MessageBox.Show("Zu viele Trennungen!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             ElseIf Not IsNumeric(Vbox.text) Or Not IsNumeric(mAbox.text) Then
                 MessageBox.Show("Nur Ziffern erlaubt!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
