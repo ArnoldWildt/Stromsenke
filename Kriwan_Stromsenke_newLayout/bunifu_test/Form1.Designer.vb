@@ -24,17 +24,9 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.Vbox = New Bunifu.Framework.UI.BunifuTextbox()
         Me.BunifuElipse1 = New Bunifu.Framework.UI.BunifuElipse(Me.components)
-        Me.BunifuGradientPanel2 = New Bunifu.Framework.UI.BunifuGradientPanel()
-        Me.Stromlabel = New Bunifu.Framework.UI.BunifuCustomLabel()
-        Me.spannlabel = New Bunifu.Framework.UI.BunifuCustomLabel()
-        Me.portscan = New Bunifu.Framework.UI.BunifuFlatButton()
-        Me.start_stop = New Bunifu.Framework.UI.BunifuFlatButton()
-        Me.mAbox = New Bunifu.Framework.UI.BunifuTextbox()
         Me.BunifuDragControl1 = New Bunifu.Framework.UI.BunifuDragControl(Me.components)
         Me.portlabel = New Bunifu.Framework.UI.BunifuCustomLabel()
-        Me.closebtn = New Bunifu.Framework.UI.BunifuImageButton()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.barV = New Bunifu.Framework.UI.BunifuProgressBar()
         Me.barmA = New Bunifu.Framework.UI.BunifuProgressBar()
@@ -44,26 +36,229 @@ Partial Class Form1
         Me.BunifuCustomLabel7 = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.TrueV = New Bunifu.Framework.UI.BunifuCustomLabel()
         Me.TruemA = New Bunifu.Framework.UI.BunifuCustomLabel()
-        Me.BunifuGradientPanel2.SuspendLayout()
+        Me.BunifuCustomLabel1 = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.AVoltbar = New Bunifu.Framework.UI.BunifuProgressBar()
+        Me.BunifuCustomLabel2 = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.BunifuCustomLabel3 = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.BunifuCustomLabel8 = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.AVoltlab = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.BunifuCustomLabel10 = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.closebtn = New Bunifu.Framework.UI.BunifuImageButton()
+        Me.BunifuGradientPanel2 = New Bunifu.Framework.UI.BunifuGradientPanel()
+        Me.Stromlabel = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.spannlabel = New Bunifu.Framework.UI.BunifuCustomLabel()
+        Me.portscan = New Bunifu.Framework.UI.BunifuFlatButton()
+        Me.start_stop = New Bunifu.Framework.UI.BunifuFlatButton()
+        Me.mAbox = New Bunifu.Framework.UI.BunifuTextbox()
+        Me.Vbox = New Bunifu.Framework.UI.BunifuTextbox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.closebtn, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BunifuGradientPanel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Vbox
-        '
-        Me.Vbox.BackColor = System.Drawing.Color.DodgerBlue
-        Me.Vbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Vbox.ForeColor = System.Drawing.Color.DeepSkyBlue
-        Me.Vbox.Icon = CType(resources.GetObject("Vbox.Icon"), System.Drawing.Image)
-        Me.Vbox.Location = New System.Drawing.Point(0, 53)
-        Me.Vbox.Name = "Vbox"
-        Me.Vbox.Size = New System.Drawing.Size(327, 31)
-        Me.Vbox.TabIndex = 3
-        Me.Vbox.text = ""
         '
         'BunifuElipse1
         '
         Me.BunifuElipse1.ElipseRadius = 5
         Me.BunifuElipse1.TargetControl = Me
+        '
+        'BunifuDragControl1
+        '
+        Me.BunifuDragControl1.Fixed = True
+        Me.BunifuDragControl1.Horizontal = True
+        Me.BunifuDragControl1.TargetControl = Me
+        Me.BunifuDragControl1.Vertical = True
+        '
+        'portlabel
+        '
+        Me.portlabel.AutoSize = True
+        Me.portlabel.BackColor = System.Drawing.Color.Transparent
+        Me.portlabel.Location = New System.Drawing.Point(828, 391)
+        Me.portlabel.Name = "portlabel"
+        Me.portlabel.Size = New System.Drawing.Size(118, 13)
+        Me.portlabel.TabIndex = 8
+        Me.portlabel.Text = "Kein Arduino gefunden!"
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        '
+        'barV
+        '
+        Me.barV.BackColor = System.Drawing.Color.Silver
+        Me.barV.BorderRadius = 5
+        Me.barV.Location = New System.Drawing.Point(368, 274)
+        Me.barV.MaximumValue = 30
+        Me.barV.Name = "barV"
+        Me.barV.ProgressColor = System.Drawing.Color.Teal
+        Me.barV.Size = New System.Drawing.Size(262, 29)
+        Me.barV.TabIndex = 11
+        Me.barV.Value = 0
+        '
+        'barmA
+        '
+        Me.barmA.BackColor = System.Drawing.Color.Silver
+        Me.barmA.BorderRadius = 5
+        Me.barmA.Location = New System.Drawing.Point(658, 274)
+        Me.barmA.MaximumValue = 1000
+        Me.barmA.Name = "barmA"
+        Me.barmA.ProgressColor = System.Drawing.Color.Teal
+        Me.barmA.Size = New System.Drawing.Size(262, 29)
+        Me.barmA.TabIndex = 13
+        Me.barmA.Value = 0
+        '
+        'BunifuCustomLabel4
+        '
+        Me.BunifuCustomLabel4.AutoSize = True
+        Me.BunifuCustomLabel4.Location = New System.Drawing.Point(365, 306)
+        Me.BunifuCustomLabel4.Name = "BunifuCustomLabel4"
+        Me.BunifuCustomLabel4.Size = New System.Drawing.Size(23, 13)
+        Me.BunifuCustomLabel4.TabIndex = 14
+        Me.BunifuCustomLabel4.Text = "0 V"
+        '
+        'BunifuCustomLabel5
+        '
+        Me.BunifuCustomLabel5.AutoSize = True
+        Me.BunifuCustomLabel5.Location = New System.Drawing.Point(601, 306)
+        Me.BunifuCustomLabel5.Name = "BunifuCustomLabel5"
+        Me.BunifuCustomLabel5.Size = New System.Drawing.Size(29, 13)
+        Me.BunifuCustomLabel5.TabIndex = 15
+        Me.BunifuCustomLabel5.Text = "30 V"
+        '
+        'BunifuCustomLabel6
+        '
+        Me.BunifuCustomLabel6.AutoSize = True
+        Me.BunifuCustomLabel6.Location = New System.Drawing.Point(655, 306)
+        Me.BunifuCustomLabel6.Name = "BunifuCustomLabel6"
+        Me.BunifuCustomLabel6.Size = New System.Drawing.Size(31, 13)
+        Me.BunifuCustomLabel6.TabIndex = 16
+        Me.BunifuCustomLabel6.Text = "0 mA"
+        '
+        'BunifuCustomLabel7
+        '
+        Me.BunifuCustomLabel7.AutoSize = True
+        Me.BunifuCustomLabel7.Location = New System.Drawing.Point(871, 306)
+        Me.BunifuCustomLabel7.Name = "BunifuCustomLabel7"
+        Me.BunifuCustomLabel7.Size = New System.Drawing.Size(49, 13)
+        Me.BunifuCustomLabel7.TabIndex = 17
+        Me.BunifuCustomLabel7.Text = "1000 mA"
+        '
+        'TrueV
+        '
+        Me.TrueV.AutoSize = True
+        Me.TrueV.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.TrueV.Location = New System.Drawing.Point(480, 251)
+        Me.TrueV.Name = "TrueV"
+        Me.TrueV.Size = New System.Drawing.Size(33, 20)
+        Me.TrueV.TabIndex = 18
+        Me.TrueV.Text = "0 V"
+        '
+        'TruemA
+        '
+        Me.TruemA.AutoSize = True
+        Me.TruemA.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.TruemA.Location = New System.Drawing.Point(770, 251)
+        Me.TruemA.Name = "TruemA"
+        Me.TruemA.Size = New System.Drawing.Size(46, 20)
+        Me.TruemA.TabIndex = 19
+        Me.TruemA.Text = "0 mA"
+        '
+        'BunifuCustomLabel1
+        '
+        Me.BunifuCustomLabel1.AutoSize = True
+        Me.BunifuCustomLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuCustomLabel1.Location = New System.Drawing.Point(364, 207)
+        Me.BunifuCustomLabel1.Name = "BunifuCustomLabel1"
+        Me.BunifuCustomLabel1.Size = New System.Drawing.Size(158, 20)
+        Me.BunifuCustomLabel1.TabIndex = 20
+        Me.BunifuCustomLabel1.Text = "Eingestellter Wert:"
+        '
+        'AVoltbar
+        '
+        Me.AVoltbar.BackColor = System.Drawing.Color.Silver
+        Me.AVoltbar.BorderRadius = 5
+        Me.AVoltbar.Location = New System.Drawing.Point(514, 133)
+        Me.AVoltbar.MaximumValue = 30
+        Me.AVoltbar.Name = "AVoltbar"
+        Me.AVoltbar.ProgressColor = System.Drawing.Color.Teal
+        Me.AVoltbar.Size = New System.Drawing.Size(262, 29)
+        Me.AVoltbar.TabIndex = 21
+        Me.AVoltbar.Value = 0
+        '
+        'BunifuCustomLabel2
+        '
+        Me.BunifuCustomLabel2.AutoSize = True
+        Me.BunifuCustomLabel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuCustomLabel2.Location = New System.Drawing.Point(364, 81)
+        Me.BunifuCustomLabel2.Name = "BunifuCustomLabel2"
+        Me.BunifuCustomLabel2.Size = New System.Drawing.Size(128, 20)
+        Me.BunifuCustomLabel2.TabIndex = 22
+        Me.BunifuCustomLabel2.Text = "Aktueller Wert:"
+        '
+        'BunifuCustomLabel3
+        '
+        Me.BunifuCustomLabel3.AutoSize = True
+        Me.BunifuCustomLabel3.Location = New System.Drawing.Point(511, 165)
+        Me.BunifuCustomLabel3.Name = "BunifuCustomLabel3"
+        Me.BunifuCustomLabel3.Size = New System.Drawing.Size(23, 13)
+        Me.BunifuCustomLabel3.TabIndex = 23
+        Me.BunifuCustomLabel3.Text = "0 V"
+        '
+        'BunifuCustomLabel8
+        '
+        Me.BunifuCustomLabel8.AutoSize = True
+        Me.BunifuCustomLabel8.Location = New System.Drawing.Point(747, 165)
+        Me.BunifuCustomLabel8.Name = "BunifuCustomLabel8"
+        Me.BunifuCustomLabel8.Size = New System.Drawing.Size(29, 13)
+        Me.BunifuCustomLabel8.TabIndex = 24
+        Me.BunifuCustomLabel8.Text = "30 V"
+        '
+        'AVoltlab
+        '
+        Me.AVoltlab.AutoSize = True
+        Me.AVoltlab.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
+        Me.AVoltlab.Location = New System.Drawing.Point(626, 110)
+        Me.AVoltlab.Name = "AVoltlab"
+        Me.AVoltlab.Size = New System.Drawing.Size(33, 20)
+        Me.AVoltlab.TabIndex = 25
+        Me.AVoltlab.Text = "0 V"
+        '
+        'BunifuCustomLabel10
+        '
+        Me.BunifuCustomLabel10.AutoSize = True
+        Me.BunifuCustomLabel10.Font = New System.Drawing.Font("Segoe UI Emoji", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BunifuCustomLabel10.ForeColor = System.Drawing.Color.Gray
+        Me.BunifuCustomLabel10.Location = New System.Drawing.Point(349, 13)
+        Me.BunifuCustomLabel10.Name = "BunifuCustomLabel10"
+        Me.BunifuCustomLabel10.Size = New System.Drawing.Size(120, 28)
+        Me.BunifuCustomLabel10.TabIndex = 26
+        Me.BunifuCustomLabel10.Text = "Stromsenke"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.PictureBox1.Image = Global.Kriwan_Stromsenke.My.Resources.Resources.tzw1
+        Me.PictureBox1.Location = New System.Drawing.Point(676, 368)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(140, 45)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 9
+        Me.PictureBox1.TabStop = False
+        '
+        'closebtn
+        '
+        Me.closebtn.BackColor = System.Drawing.Color.Transparent
+        Me.closebtn.Image = CType(resources.GetObject("closebtn.Image"), System.Drawing.Image)
+        Me.closebtn.ImageActive = Nothing
+        Me.closebtn.Location = New System.Drawing.Point(896, 12)
+        Me.closebtn.Name = "closebtn"
+        Me.closebtn.Size = New System.Drawing.Size(50, 50)
+        Me.closebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.closebtn.TabIndex = 9
+        Me.closebtn.TabStop = False
+        Me.closebtn.Zoom = 10
         '
         'BunifuGradientPanel2
         '
@@ -90,9 +285,10 @@ Partial Class Form1
         '
         Me.Stromlabel.AutoSize = True
         Me.Stromlabel.BackColor = System.Drawing.Color.Transparent
-        Me.Stromlabel.Location = New System.Drawing.Point(12, 115)
+        Me.Stromlabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Stromlabel.Location = New System.Drawing.Point(12, 113)
         Me.Stromlabel.Name = "Stromlabel"
-        Me.Stromlabel.Size = New System.Drawing.Size(34, 13)
+        Me.Stromlabel.Size = New System.Drawing.Size(40, 15)
         Me.Stromlabel.TabIndex = 8
         Me.Stromlabel.Text = "Strom"
         '
@@ -100,9 +296,10 @@ Partial Class Form1
         '
         Me.spannlabel.AutoSize = True
         Me.spannlabel.BackColor = System.Drawing.Color.Transparent
-        Me.spannlabel.Location = New System.Drawing.Point(12, 37)
+        Me.spannlabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.spannlabel.Location = New System.Drawing.Point(12, 35)
         Me.spannlabel.Name = "spannlabel"
-        Me.spannlabel.Size = New System.Drawing.Size(93, 13)
+        Me.spannlabel.Size = New System.Drawing.Size(108, 15)
         Me.spannlabel.TabIndex = 7
         Me.spannlabel.Text = "Spannungsgrenze"
         '
@@ -177,6 +374,7 @@ Partial Class Form1
         'mAbox
         '
         Me.mAbox.BackColor = System.Drawing.Color.DodgerBlue
+        Me.mAbox.BackgroundImage = CType(resources.GetObject("mAbox.BackgroundImage"), System.Drawing.Image)
         Me.mAbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.mAbox.ForeColor = System.Drawing.Color.DeepSkyBlue
         Me.mAbox.Icon = CType(resources.GetObject("mAbox.Icon"), System.Drawing.Image)
@@ -187,126 +385,32 @@ Partial Class Form1
         Me.mAbox.TabIndex = 4
         Me.mAbox.text = ""
         '
-        'BunifuDragControl1
+        'Vbox
         '
-        Me.BunifuDragControl1.Fixed = True
-        Me.BunifuDragControl1.Horizontal = True
-        Me.BunifuDragControl1.TargetControl = Me
-        Me.BunifuDragControl1.Vertical = True
-        '
-        'portlabel
-        '
-        Me.portlabel.AutoSize = True
-        Me.portlabel.BackColor = System.Drawing.Color.Transparent
-        Me.portlabel.Location = New System.Drawing.Point(828, 391)
-        Me.portlabel.Name = "portlabel"
-        Me.portlabel.Size = New System.Drawing.Size(118, 13)
-        Me.portlabel.TabIndex = 8
-        Me.portlabel.Text = "Kein Arduino gefunden!"
-        '
-        'closebtn
-        '
-        Me.closebtn.BackColor = System.Drawing.Color.Transparent
-        Me.closebtn.Image = CType(resources.GetObject("closebtn.Image"), System.Drawing.Image)
-        Me.closebtn.ImageActive = Nothing
-        Me.closebtn.Location = New System.Drawing.Point(896, 12)
-        Me.closebtn.Name = "closebtn"
-        Me.closebtn.Size = New System.Drawing.Size(50, 50)
-        Me.closebtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.closebtn.TabIndex = 9
-        Me.closebtn.TabStop = False
-        Me.closebtn.Zoom = 10
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
-        '
-        'barV
-        '
-        Me.barV.BackColor = System.Drawing.Color.Silver
-        Me.barV.BorderRadius = 5
-        Me.barV.Location = New System.Drawing.Point(368, 177)
-        Me.barV.MaximumValue = 30
-        Me.barV.Name = "barV"
-        Me.barV.ProgressColor = System.Drawing.Color.Teal
-        Me.barV.Size = New System.Drawing.Size(262, 29)
-        Me.barV.TabIndex = 11
-        Me.barV.Value = 0
-        '
-        'barmA
-        '
-        Me.barmA.BackColor = System.Drawing.Color.Silver
-        Me.barmA.BorderRadius = 5
-        Me.barmA.Location = New System.Drawing.Point(658, 177)
-        Me.barmA.MaximumValue = 1000
-        Me.barmA.Name = "barmA"
-        Me.barmA.ProgressColor = System.Drawing.Color.Teal
-        Me.barmA.Size = New System.Drawing.Size(262, 29)
-        Me.barmA.TabIndex = 13
-        Me.barmA.Value = 0
-        '
-        'BunifuCustomLabel4
-        '
-        Me.BunifuCustomLabel4.AutoSize = True
-        Me.BunifuCustomLabel4.Location = New System.Drawing.Point(365, 209)
-        Me.BunifuCustomLabel4.Name = "BunifuCustomLabel4"
-        Me.BunifuCustomLabel4.Size = New System.Drawing.Size(23, 13)
-        Me.BunifuCustomLabel4.TabIndex = 14
-        Me.BunifuCustomLabel4.Text = "0 V"
-        '
-        'BunifuCustomLabel5
-        '
-        Me.BunifuCustomLabel5.AutoSize = True
-        Me.BunifuCustomLabel5.Location = New System.Drawing.Point(601, 209)
-        Me.BunifuCustomLabel5.Name = "BunifuCustomLabel5"
-        Me.BunifuCustomLabel5.Size = New System.Drawing.Size(29, 13)
-        Me.BunifuCustomLabel5.TabIndex = 15
-        Me.BunifuCustomLabel5.Text = "30 V"
-        '
-        'BunifuCustomLabel6
-        '
-        Me.BunifuCustomLabel6.AutoSize = True
-        Me.BunifuCustomLabel6.Location = New System.Drawing.Point(655, 209)
-        Me.BunifuCustomLabel6.Name = "BunifuCustomLabel6"
-        Me.BunifuCustomLabel6.Size = New System.Drawing.Size(31, 13)
-        Me.BunifuCustomLabel6.TabIndex = 16
-        Me.BunifuCustomLabel6.Text = "0 mA"
-        '
-        'BunifuCustomLabel7
-        '
-        Me.BunifuCustomLabel7.AutoSize = True
-        Me.BunifuCustomLabel7.Location = New System.Drawing.Point(871, 209)
-        Me.BunifuCustomLabel7.Name = "BunifuCustomLabel7"
-        Me.BunifuCustomLabel7.Size = New System.Drawing.Size(49, 13)
-        Me.BunifuCustomLabel7.TabIndex = 17
-        Me.BunifuCustomLabel7.Text = "1000 mA"
-        '
-        'TrueV
-        '
-        Me.TrueV.AutoSize = True
-        Me.TrueV.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.TrueV.Location = New System.Drawing.Point(481, 154)
-        Me.TrueV.Name = "TrueV"
-        Me.TrueV.Size = New System.Drawing.Size(33, 20)
-        Me.TrueV.TabIndex = 18
-        Me.TrueV.Text = "0 V"
-        '
-        'TruemA
-        '
-        Me.TruemA.AutoSize = True
-        Me.TruemA.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!)
-        Me.TruemA.Location = New System.Drawing.Point(769, 154)
-        Me.TruemA.Name = "TruemA"
-        Me.TruemA.Size = New System.Drawing.Size(46, 20)
-        Me.TruemA.TabIndex = 19
-        Me.TruemA.Text = "0 mA"
+        Me.Vbox.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Vbox.BackgroundImage = CType(resources.GetObject("Vbox.BackgroundImage"), System.Drawing.Image)
+        Me.Vbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Vbox.ForeColor = System.Drawing.Color.DeepSkyBlue
+        Me.Vbox.Icon = CType(resources.GetObject("Vbox.Icon"), System.Drawing.Image)
+        Me.Vbox.Location = New System.Drawing.Point(0, 53)
+        Me.Vbox.Name = "Vbox"
+        Me.Vbox.Size = New System.Drawing.Size(327, 31)
+        Me.Vbox.TabIndex = 3
+        Me.Vbox.text = ""
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(958, 413)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.BunifuCustomLabel10)
+        Me.Controls.Add(Me.AVoltlab)
+        Me.Controls.Add(Me.BunifuCustomLabel8)
+        Me.Controls.Add(Me.BunifuCustomLabel3)
+        Me.Controls.Add(Me.BunifuCustomLabel2)
+        Me.Controls.Add(Me.AVoltbar)
+        Me.Controls.Add(Me.BunifuCustomLabel1)
         Me.Controls.Add(Me.TruemA)
         Me.Controls.Add(Me.TrueV)
         Me.Controls.Add(Me.BunifuCustomLabel7)
@@ -321,9 +425,10 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.Text = "Form1"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.closebtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BunifuGradientPanel2.ResumeLayout(False)
         Me.BunifuGradientPanel2.PerformLayout()
-        CType(Me.closebtn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -348,4 +453,12 @@ Partial Class Form1
     Friend WithEvents BunifuCustomLabel5 As Bunifu.Framework.UI.BunifuCustomLabel
     Friend WithEvents BunifuCustomLabel4 As Bunifu.Framework.UI.BunifuCustomLabel
     Friend WithEvents barmA As Bunifu.Framework.UI.BunifuProgressBar
+    Friend WithEvents BunifuCustomLabel10 As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents AVoltlab As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents BunifuCustomLabel8 As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents BunifuCustomLabel3 As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents BunifuCustomLabel2 As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents AVoltbar As Bunifu.Framework.UI.BunifuProgressBar
+    Friend WithEvents BunifuCustomLabel1 As Bunifu.Framework.UI.BunifuCustomLabel
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

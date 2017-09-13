@@ -6,12 +6,14 @@ Public Class Form1
 
 
     Dim WithEvents SerialPort As New Ports.SerialPort
+    Private WithEvents Timer1 As New System.Windows.Forms.Timer()
     Dim selPort As String
     Dim PortRec As String
     Dim Volt As String
     Dim Curr As String
     Dim Started As Boolean
-    Dim dot As Char = ","
+    Dim dot As Char = "."
+    Dim o_PortRec As String
 
     Private _Encoding As System.Text.Encoding
 
@@ -19,6 +21,23 @@ Public Class Form1
     Public Sub New()
         InitializeComponent()
         _Encoding = System.Text.Encoding.Default
+    End Sub
+    ' Every 100ms do -> if Started is True
+    Private Sub TimerEventProcessor(myObject As Object, ByVal myEventArgs As EventArgs) Handles Timer1.Tick
+        If Not PortRec = o_PortRec Then
+            'MessageBox.Show(o_PortRec, "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            Dim sub_PortRec As String = PortRec.Substring(3)
+
+            AVoltlab.Text = sub_PortRec + " V"
+
+            sub_PortRec = sub_PortRec.Replace(".", ",")
+
+            AVoltbar.Value = sub_PortRec
+        End If
+
+        PortRec = Nothing
+        o_PortRec = PortRec
+
     End Sub
 
     ' On Load
@@ -28,6 +47,9 @@ Public Class Form1
         SerialPort.StopBits = StopBits.One
         SerialPort.Handshake = Handshake.None
         SerialPort.Parity = Parity.None
+
+        Timer1.Interval = 100
+        Timer1.Enabled = False
 
         SPSetup()
     End Sub
@@ -57,7 +79,7 @@ Public Class Form1
     Private Sub BunifuImageButton1_Click(sender As Object, e As EventArgs) Handles closebtn.Click
         If Started Then
             If MessageBox.Show("Das Programm läuft noch! Wirklich schließen?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                SerialPort.Open()
+                'SerialPort.Open()
                 SerialPort.Write("C$")
                 Application.Exit()
             End If
@@ -121,7 +143,7 @@ Public Class Form1
         Dim countdotmA As Integer = 0
 
         If Started Then
-            SerialPort.Open()
+            'SerialPort.Open()
 
             SerialPort.Write("C$")
             start_stop.Text = "Start"
@@ -133,7 +155,7 @@ Public Class Form1
             start_stop.OnHovercolor = Color.FromArgb(36, 129, 77)
             start_stop.Activecolor = Color.FromArgb(36, 129, 77)
             start_stop.Iconimage = My.Resources.icons8_Play_50
-            SerialPort.Close()
+            'SerialPort.Close()
 
             Vbox.Enabled = True
             mAbox.Enabled = True
@@ -141,6 +163,8 @@ Public Class Form1
 
 
         Else
+
+            Timer1.Enabled = True
 
             If mAbox.text.Contains(".") Then
                 mAbox.text = mAbox.text.Replace(".", ",")
@@ -163,7 +187,7 @@ Public Class Form1
 
             If String.IsNullOrEmpty(Vbox.text) Or String.IsNullOrEmpty(mAbox.text) Then
                 MessageBox.Show("Die Zeile darf nicht Leer sein!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
-            ElseIf countdotV > 1 Or countdotmA > 1 Then
+            ElseIf countdotV > 0 Or countdotmA > 0 Then
                 MessageBox.Show("Zu viele Trennungen!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
             ElseIf Not IsNumeric(Vbox.text) Or Not IsNumeric(mAbox.text) Then
                 MessageBox.Show("Nur Ziffern erlaubt!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
@@ -210,7 +234,7 @@ Public Class Form1
                 Vbox.text = ""
                 mAbox.text = ""
 
-                SerialPort.Close()
+                'SerialPort.Close()
                 portscan.Enabled = False
                 Vbox.Enabled = False
                 mAbox.Enabled = False
@@ -222,6 +246,7 @@ Public Class Form1
             End If
         End If
     End Sub
+
 End Class
 
 

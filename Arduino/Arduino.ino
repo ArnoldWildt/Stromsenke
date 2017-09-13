@@ -18,6 +18,8 @@ boolean stringComplete = false;
 String voltnumb;
 String currnumb;
 
+double count;
+
 void setup(){
    Serial.begin(9600); 
    pinMode(13, OUTPUT);
@@ -77,6 +79,15 @@ void loop(){
     delay(500);
     digitalWrite(13, LOW);
     delay(500);
+    Serial.print("T: ");
+    Serial.print(count);
+    //Serial.println("$");
+    count += 0.1;
+    
+    if(count >= 30){
+      count = 0;
+    }
+    
     serialEvent();
     inputString.toCharArray(inputchars, 20);
     
