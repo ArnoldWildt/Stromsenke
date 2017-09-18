@@ -1,3 +1,11 @@
+//#########
+double In = 0.100;        // Einstellen des Stromwert in mA
+//#########
+
+//DEN REST NICHT VERÄNDERN!
+//#########################
+
+
 // Librarys 
 #include <SPI.h>
 #include <DACMCP4821.h>  
@@ -21,7 +29,7 @@ double Setpoint, LOAD, DA;
 //LOAD = Mittelwert des Analog Read Arrays,
 //DA errechneter Wert des PID Codes 
 
-double In = 0.100;        // Einstellen des Stromwert in mA
+
 double oben;              // Obere Totzeit
 double unten;             // Untere Totzeit
 
