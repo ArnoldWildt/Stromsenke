@@ -1,15 +1,17 @@
 // PINS
-//  A0 LOAD
+
 //  2 / 7 / 4 // DAC // CS / Shutdown / LDAC
 //  SDI Pin to MOSI Pin 11
 //  SCK Pin to SCK Pin 13
+// MISO Pin 12
 
+// Librarys 
 #include <SPI.h>
-#include <DACMCP4821.h>  // Librarys 
+#include <DACMCP4821.h>  
 #include <PID_v1.h>
 #include <Mcp3208.h>
 
-#define PIN_LOAD A0                   // Pin Load#
+#define PIN_LOAD A0   // alter ADC nicht mehr benutz
 #define PIN_5V 7                // Strommessungs A-ref
 #define PIN_TO 8
 
@@ -19,11 +21,11 @@ int ames[50];
 #define ADC_VREF    1000              // 1V Vref
 #define ADC_CLK     9000000           // SPI clock 9MHz
 
-MCP3208 adc(ADC_VREF, SPI_CS);
+MCP3208 adc(ADC_VREF, SPI_CS);    // init adc 
 
-double Setpoint, LOAD, DA;            // Double Variablen
-int da_1;                             // Umwandlung
-double Kp = 0.1, Ki = 1.0, Kd = 0;   // Anteil des PIDs
+double Setpoint, LOAD, DA;            
+int da_1;                             
+double Kp = 0.1, Ki = 1.0, Kd = 0;   // Anteile des PIDs
 
 PID myPID(&LOAD, &DA, &Setpoint, Kp, Ki, Kd, DIRECT);
 //initialisiere Befehl PID  myPID mit Variablen // DIRECT aus PID_v1.h
@@ -32,7 +34,7 @@ int xxx = 100;                         //Variable Zeitkonstante
 
 DACMCP4821 dac(2, 7, 4);              // Pin Belegung, CS,LDAC,SHUTD
 
-int outputAnalog;                     // Analoger Wert in Bits als         
+int outputAnalog;                             
 double oben;
 double unten;
 byte ganancia; 
@@ -50,13 +52,13 @@ void setup() {
   pinMode(SPI_CS, OUTPUT);
   digitalWrite(SPI_CS, LOW);
 
-  //LOAD = analogRead(PIN_LOAD);
+  //LOAD = analogRead(PIN_LOAD); // alter befehl nicht mehr benutz
   
-  double In = 0.100;
+  double In = 0.100;      // Einstellen des Stromwert in mA
   
-  Setpoint = (In * 4096); // Einstellung des Stromes
+  Setpoint = (In * 4096);
   Serial.println(Setpoint);
-  myPID.SetMode(AUTOMATIC);
+  myPID.SetMode(AUTOMATIC); 
 
   SPISettings settings(ADC_CLK, MSBFIRST, SPI_MODE0);
   SPI.begin();
@@ -68,15 +70,15 @@ void loop() {
   Serial.print("Setpoint: ");
   Serial.println(Setpoint);
 
-  analogI();
+  analogI(); // Verarbeiten / Lesen des Analogwertes
   //Serial.println(LOAD);
 
-  if (LOAD > (oben = Setpoint + 0.1) || LOAD < (unten = Setpoint - 0.1))
+  if (LOAD > (oben = Setpoint + 0.1) || LOAD < (unten = Setpoint - 0.1)) // Totzeit + / - des Setpoints
 
   {
-    myPID.Compute();                                       //
+    myPID.Compute();                                       
     da_1 = DA;
-    outputAnalog = da_1 + 1065;
+    outputAnalog = da_1 + 1065; // Start bei 5 mA -> 1065: Schneller anstieg.  
     Serial.print("OUT: ");
     Serial.println(outputAnalog);
     byte msb = dac.writeDAC(outputAnalog, 1);
@@ -124,7 +126,7 @@ void analogI() {
 /*void analogV() {
   
   digitalWrite(PIN_5V,HIGH)
-  digitalWrite(SPI_CS,HIGH)*/
+  digitalWrite(SPI_CS,HIGH)*/ // Anfang der Abschaltung 
   
   
   
