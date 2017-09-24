@@ -4,8 +4,8 @@
 
 DAC::DAC(uint8_t spin){
 	
-	pinMode(spin, OUTPUT);
 	lspin = spin;
+	pinMode(lspin, OUTPUT);
 	digitalWrite(lspin,HIGH);
 }
 
@@ -19,5 +19,4 @@ byte DAC::write(uint16_t bytewrite){
 	SPI.transfer(LSB);
 	digitalWrite(lspin,HIGH);
 	
-	return;
 }
